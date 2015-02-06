@@ -539,6 +539,7 @@ FRESULT f_open (FIL * fil, const TCHAR *name, BYTE flag)
     if (stat(path, &tmp))
       return FR_INVALID_NAME;
     fil->fsize = tmp.st_size;
+    fil->fptr = 0;
   }
   fil->fs = (FATFS*)fopen(path, (flag & FA_WRITE) ? "wb+" : "rb+");
   return FR_OK;
@@ -548,6 +549,7 @@ FRESULT f_read (FIL* fil, void* data, UINT size, UINT* read)
 {
   if (fil && fil->fs) {
     *read = fread(data, 1, size, (FILE*)fil->fs);
+    fil->fptr += *read;
     // TRACE("fread(%p) %u, %u", fil->fs, size, *read);
   }
   return FR_OK;

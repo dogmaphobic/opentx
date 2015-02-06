@@ -107,7 +107,7 @@ else
   LDSCRIPT = ../targets/taranis/stm32_ramBoot.ld
   TRGT = arm-none-eabi-
   CPPDEFS += -DHSE_VALUE=12000000
-  CPPDEFS += -DPCBTARANIS 
+  CPPDEFS += -DPCBTARANIS -DXCURVES
   FULL_PRJ = $(PROJECT)_ramBoot
   EXTRAINCDIRS += ../targets/taranis/STM32F2xx_StdPeriph_Lib_V1.1.0/Libraries/STM32F2xx_StdPeriph_Driver/inc
   EXTRAINCDIRS += ../targets/taranis/STM32F2xx_StdPeriph_Lib_V1.1.0/Libraries/CMSIS/Device/ST/STM32F2xx/Include
